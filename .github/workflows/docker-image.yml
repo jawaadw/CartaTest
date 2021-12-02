@@ -1,0 +1,22 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag jawaadw/jw-carta:latest
+    - name: Run Tests
+      run: docker run jawaadw/jw-carta carta-devops test
+    - name: Publish to Dockerhub
+      run: docker push jawaadw/jw-carta:latest
