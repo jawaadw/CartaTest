@@ -18,5 +18,10 @@ jobs:
       run: docker build . --file Dockerfile --tag jawaadw/jw-carta:latest
     - name: Run Tests
       run: docker run jawaadw/jw-carta carta-devops test
+    - name: Docker Login
+      uses: docker/login-action@v1.10.0
+      with:
+        username: jawaadw@gmail.com
+        password: ac5b96e2-2d0e-4058-9dd5-47942d6899ca
     - name: Publish to Dockerhub
       run: docker push jawaadw/jw-carta:latest
