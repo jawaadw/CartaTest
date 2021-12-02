@@ -21,7 +21,7 @@ jobs:
     - name: Docker Login
       uses: docker/login-action@v1.10.0
       with:
-        username: jawaadw@gmail.com
+        username: jawaadw
         password: ac5b96e2-2d0e-4058-9dd5-47942d6899ca
     - name: Publish to Dockerhub
       run: docker push jawaadw/jw-carta:latest
