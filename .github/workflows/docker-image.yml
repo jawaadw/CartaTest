@@ -18,9 +18,14 @@ jobs:
       run: docker build . --file Dockerfile --tag jawaadw/carta:latest
     - name: Run Tests & Serve
       run: >
-           docker run jawaadw/carta 
-           sh -c 
-           "sed -i 's/<h1>Hi<\/h1>/<h1>Jawaad Waheed<\/h1><h2>jawaadw@gmail.com<\/h2><h3><a href=\"https:\/\/github.com\/jawaadw\/CartaTest\/actions\">Link to DockerHub Repo<\/a><\/h3>/g' app/templates/index.html 
+           docker run jawaadw/carta
+           sh -c
+           "cd app/templates
+           && > index.html
+           && echo -e \"<h1>Jawaad Waheed</h1>\" >> index.html
+           && echo -e \"<h2>jawaadw@gmail.com</h2>\" >> index.html
+           && echo -e \"<h3><a href=\"https://github.com/jawaadw/CartaTest/actions\">Link to DockerHub Repo</a></h3>\" >> index.html
+           && cd ../..
            && carta-devops test"
     - name: Docker Login
       uses: docker/login-action@v1.10.0
