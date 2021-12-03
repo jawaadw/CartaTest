@@ -22,6 +22,6 @@ jobs:
       uses: docker/login-action@v1.10.0
       with:
         username: jawaadw
-        password: ac5b96e2-2d0e-4058-9dd5-47942d6899ca # This is an old access token; It doesn't work anymore
+        password: 387b455e-87e3-4dc9-bded-5004cdceadb5 # This is an old access token; It doesn't work anymore
     - name: Publish to Dockerhub
       run: docker push jawaadw/carta:latest
