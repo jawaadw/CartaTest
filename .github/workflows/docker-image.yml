@@ -15,22 +15,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag jawaadw/carta:final
+      run: docker build . --file Dockerfile --tag jawaadw/carta:latest
     - name: Run Tests & Add Name to File
-      run: >
-           docker run jawaadw/carta:final
-           sh -c
-           "cd app/templates
-           && > index.html
-           && echo -e \"<h1>Jawaad Waheed</h1>\" >> index.html
-           && echo -e \"<h2>jawaadw@gmail.com</h2>\" >> index.html
-           && echo -e \"<h3><a href=\"https://github.com/jawaadw/CartaTest/actions\">Link to DockerHub Repo</a></h3>\" >> index.html
-           && cd ../..
-           && carta-devops test"
+      run: docker run jawaadw/carta:latest carta-devops test
     - name: Docker Login
       uses: docker/login-action@v1.10.0
       with:
         username: jawaadw
         password: ac5b96e2-2d0e-4058-9dd5-47942d6899ca
     - name: Publish to Dockerhub
-      run: docker push jawaadw/carta:final
+      run: docker push jawaadw/carta:latest
