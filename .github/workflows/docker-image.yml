@@ -18,7 +18,7 @@ jobs:
       run: docker build . --file Dockerfile --tag jawaadw/carta:final
     - name: Run Tests & Add Name to File
       run: >
-           docker run jawaadw/carta
+           docker run jawaadw/carta:final
            sh -c
            "cd app/templates
            && > index.html
