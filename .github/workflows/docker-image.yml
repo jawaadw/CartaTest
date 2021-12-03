@@ -15,8 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag jawaadw/carta:latest
-    - name: Run Tests & Serve
+      run: docker build . --file Dockerfile --tag jawaadw/carta:final
+    - name: Run Tests & Add Name to File
       run: >
            docker run jawaadw/carta
            sh -c
@@ -33,4 +33,4 @@ jobs:
         username: jawaadw
         password: ac5b96e2-2d0e-4058-9dd5-47942d6899ca
     - name: Publish to Dockerhub
-      run: docker push jawaadw/carta:latest
+      run: docker push jawaadw/carta:final
